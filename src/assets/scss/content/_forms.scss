@@ -22,11 +22,10 @@ select {
 @include stylable-inputs {
 	line-height: inherit;
 	border: 1px solid $grey-medium;
-	padding: .5em 1em;
-	width: 100%;
+	padding: .25em 0.5em;
 	box-sizing: border-box;
 	color: inherit;
-	border-radius: 5px;
+	border-radius: 2px;
 	
 	@include placeholder {
 		color: $grey-aa;
