@@ -1,20 +1,20 @@
 <template>
-  <div id="app">
-    <router-view/>
-  </div>
+	<div id="app">
+		<router-view/>
+	</div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+	name: 'App'
 }
 </script>
 
-<style src="./styles/global.scss" lang="scss"></style>
+<style src="./assets/scss/global.scss" lang="scss"></style>
 <style>
-#app {
-  margin: 2rem auto;
-  padding: 0 2rem;
-  max-width: 120rem;
-}
+	#app {
+		margin: 2rem auto;
+		padding: 0 2rem;
+		max-width: 120rem;
+	}
 </style>
