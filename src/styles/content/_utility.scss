@@ -1,0 +1,99 @@
+// ==================================================
+// Utility Classes
+// ==================================================
+
+
+// Spacing
+// ------------------------------
+.no-margin {
+	margin-bottom: 0;
+}
+.margin-1 {
+	margin-bottom: $space;
+}
+.margin-2 {
+	margin-bottom: ($space * 2);
+}
+.margin-3 {
+	margin-bottom: ($space * 3);
+}
+.margin-4 {
+	margin-bottom: ($space * 4);
+}
+
+
+// Sizing
+// ------------------------------
+.full-width {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+
+// Visibility
+// ------------------------------
+.visually-hidden {
+	@include visually-hidden;
+}
+.invisible {
+	visibility: hidden;
+}
+.print-only {
+	display: none;
+}
+
+
+// Text
+// ------------------------------
+.text-left {
+	text-align: left;
+}
+.text-center {
+	text-align: center;
+}
+.text-right {
+	text-align: right;
+}
+.hyphens {
+	hyphens: auto;
+}
+
+
+// Float
+// ------------------------------
+.float-left {
+	float: left;
+	margin: 0 $space $space 0;
+}
+.float-right {
+	float: right;
+	margin: 0 0 $space $space;
+}
+.float-left,
+.float-right {
+	max-width: calc( 50% - #{ $space } );
+	
+	@include screen-below( small ) {
+		float: none;
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 100%;
+	}
+}
+.clear {
+	clear: both;
+}
+
+
+// Overflow
+// ------------------------------
+.clearfix {
+	@include clearfix;
+}
+.scroll {
+	@include smooth-scroll;
+}
+.no-overflow {
+	overflow: hidden;
+}

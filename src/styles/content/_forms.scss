@@ -1,0 +1,69 @@
+// ==================================================
+// Forms
+// ==================================================
+
+
+// Standard forms
+// ------------------------------
+form {}
+fieldset {
+	padding: 0;
+	border: none;
+}
+legend {
+	@include caption-text;
+}
+label {}
+
+// Text inputs and buttons
+select {
+	@include reset-appearance;
+}
+@include stylable-inputs {
+	line-height: inherit;
+	border: 1px solid $grey-medium;
+	padding: .5em 1em;
+	width: 100%;
+	box-sizing: border-box;
+	color: inherit;
+	border-radius: 5px;
+	
+	@include placeholder {
+		color: $grey-aa;
+	}
+	&[readonly],
+	&[disabled] {
+		border-color: $grey-light;
+		background: $grey-lighter;
+	}
+	&:required {}
+	&:optional {}
+	&:valid {}
+	&:invalid {}
+	&:in-range {}
+	&:out-of-range {}
+	&:read-only {}
+	&:read-write {}
+}
+textarea {
+	resize: vertical;
+}
+
+// Other inputs
+input[type="checkbox"] {}
+input[type="radio"] {}
+input[type="file"] {}
+input[type="image"] {}
+input[type="color"] {}
+input[type="range"] {}
+datalist {}
+output {
+	@include output-text;
+	color: $grey-lighter;
+	background: $grey-dark;
+}
+progress {}
+meter {}
+
+// Buttons
+// to style form buttons, go to the _buttons.scss file

@@ -1,0 +1,59 @@
+// ==================================================
+// Tables
+// ==================================================
+
+
+// Standard tables
+// ------------------------------
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border-top: 1px solid $grey-lighter;
+}
+caption {
+	@include caption-text;
+	margin-bottom: 1rem;
+}
+td, th {
+	padding: .5em 1em;
+	border-bottom: 1px solid $grey-lighter;
+	text-align: left;
+	vertical-align: top;
+	
+	thead &,
+	tfoot & {
+		background-color: $grey-lighter;
+	}
+}
+
+
+// Responsive tables
+// ------------------------------
+.responsive-table {
+	@include screen-below( small ) {
+		border: none;
+		&, thead, tfoot, tbody, tr, th, td, caption {
+			display: block;
+		}
+		thead tr,
+		tfoot tr {
+			@include visually-hidden;
+		}
+		th {
+			background: $grey-lighter;
+		}
+		td[data-column-name],
+		th[data-column-name] {
+			display: flex;
+			
+			&:before {
+				content: attr( data-column-name );
+				min-width: 10rem;
+				max-width: 50%;
+				margin-right: 1rem;
+				flex: none;
+				font-weight: bolder;
+			}
+		}
+	}
+}

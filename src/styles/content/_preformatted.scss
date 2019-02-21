@@ -1,0 +1,26 @@
+// ==================================================
+// Preformatted
+// ==================================================
+
+
+// Standard preformatted elements
+// ------------------------------
+pre, code {
+	font-family: $font-code;
+	@include font-size-small;
+	background-color: $grey-lighter;
+}
+pre {
+	padding: .5em 1em;
+	overflow: auto;
+}
+code {
+	@include output-text;
+}
+var, kbd {
+	font-family: inherit;
+}
+samp {
+	font-family: inherit;
+	font-weight: bolder;
+}

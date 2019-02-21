@@ -10,6 +10,7 @@ export default {
 }
 </script>
 
+<style src="./styles/global.scss" lang="scss"></style>
 <style>
 #app {
   margin: 2rem auto;

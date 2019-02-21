@@ -1,0 +1,131 @@
+// ==================================================
+// Mixins
+// ==================================================
+
+
+// Media queries
+// ------------------------------
+@mixin screen-below( $breakpoint ) {
+	@media (max-width: (map-get( $breakpoints, $breakpoint ) - 1)) {
+		@content;
+	}
+}
+@mixin screen-above( $breakpoint ) {
+	@media (min-width: map-get( $breakpoints, $breakpoint )) {
+		@content;
+	}
+}
+@mixin screen-between( $breakpoint1, $breakpoint2 ) {
+	@include screen-above( $breakpoint1 ) {
+		@include screen-below( $breakpoint2 ) {
+			@content;
+		}
+	}
+}
+
+
+// Clearfix
+// ------------------------------
+@mixin clearfix {
+	// http://cssmojo.com/the-very-latest-clearfix-reloaded/
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
+
+// Hide visually but keep for screen readers
+// ------------------------------
+@mixin visually-hidden {
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	word-wrap: normal !important;
+
+	&.focusable:active,
+	&.focusable:focus {
+		height: auto;
+		width: auto;
+		overflow: visible;
+		clip: rect(auto, auto, auto, auto);
+	}
+}
+
+
+// Smooth scrolling on mobile
+// ------------------------------
+@mixin smooth-scroll {
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+
+// Form selectors
+// ------------------------------
+@mixin text-inputs {
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	input[type="url"],
+	input[type="tel"],
+	input[type="search"],
+	.ie11 input[type="color"],
+	input[type="number"],
+	input[type="date"],
+	input[type="time"],
+	input[type="datetime-local"],
+	input[type="month"],
+	input[type="week"] {
+		@content;
+	}
+}
+@mixin stylable-inputs {
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	input[type="url"],
+	input[type="tel"],
+	input[type="search"],
+	.ie11 input[type="color"],
+	input[type="number"],
+	input[type="date"],
+	input[type="time"],
+	input[type="datetime-local"],
+	input[type="month"],
+	input[type="week"],
+	textarea,
+	select {
+		@content;
+	}
+}
+@mixin form-buttons {
+	input[type="button"],
+	input[type="submit"],
+	input[type="reset"],
+	button {
+		@content;
+	}
+	::-webkit-file-upload-button {
+		@content;
+	}
+}
+@mixin placeholder {
+	// autoprefixer should take care of this automatically, kept just in case
+	&::-webkit-input-placeholder { @content; }
+	&:-ms-input-placeholder { @content; }
+	&::-ms-input-placeholder { @content; }
+	&::placeholder { @content; }
+}
+@mixin reset-appearance {
+	// Remove the default appearance of a field
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	&::-ms-expand {
+		display: none;
+	}
+}

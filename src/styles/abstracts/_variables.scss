@@ -1,0 +1,81 @@
+// ==================================================
+// Variables
+// ==================================================
+
+
+// Breakpoints
+// ------------------------------
+// Reference [http://iosres.com]
+// iPhone 4:        320x480    @2
+// iPhone SE:       320x568    @2
+// iPhone 8:        375x667    @2
+// iPhone 8+:       414x736    @3   Downsampled from 1242x2208 to 1080x1920
+// iPhone Xs:       375x812    @3
+// iPhone Xs Max:   414x896    @3
+// iPhone Xr:       414x896    @2
+// iPad:            768x1024   @2
+// iPad Pro 10.5":  834x1112   @2
+// iPad Pro 12.9":  1024x1366  @2
+//  Watch 38mm:    272x340    @1
+//  Watch 42mm:    312x390    @1
+//  Watch S4 40mm: 324x394    @1
+//  Watch S4 44mm: 368x448    @1
+$breakpoints: (
+	'xsmall': 380px,
+	'small':  580px,
+	'medium': 768px,
+	'large':  1024px,
+	'xlarge': 1400px,
+);
+
+
+// Fonts
+// ------------------------------
+
+// Font families
+$font-body: Helvetica, Arial, sans-serif;
+$font-code: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace;
+
+// Font weight reference
+$font-thin:      100;
+$font-light:     200;
+$font-book:      300;
+$font-normal:    400;
+$font-medium:    500;
+$font-semibold:  600;
+$font-bold:      700;
+$font-extrabold: 800;
+$font-black:     900;
+
+
+// Colours
+// ------------------------------
+
+// Greys
+$grey-aa:      #717171; // Lightest grey that passes WCAG2.0-AA contrast on white
+$grey-dark:    #333;
+$grey-medium:  #888;
+$grey-light:   #BBB;
+$grey-lighter: #EEE;
+
+// Messages
+$info:         #06A;
+$alert:        #FD0;
+$error:        #C00;
+$success:      #090;
+
+// Branding
+$blue:         #069;
+$blue-light:   lighten( $blue, 30% );
+
+
+// Spacing
+// ------------------------------
+$space: 2rem;
+
+
+// Animations
+// ------------------------------
+$default-easing: cubic-bezier(0.25, 1, 0.2, 1);
+$default-timing: 0.8s;
+$default-transition: $default-timing $default-easing;
