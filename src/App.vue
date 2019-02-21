@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<ul>
-			<li><router-link to="/">Basics</router-link></li>
+			<li><router-link to="/">Dynamic Text</router-link></li>
 		</ul>
 		<router-view/>
 	</div>

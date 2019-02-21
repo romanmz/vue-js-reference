@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Basics from '@/components/Basics'
+import DynamicText from '@/components/DynamicText'
 
 Vue.use(Router)
 
@@ -8,8 +8,8 @@ export default new Router({
 	routes: [
 		{
 			path: '/',
-			name: 'Basics',
-			component: Basics,
+			name: 'Dynamic Text',
+			component: DynamicText,
 		},
 	],
 })
