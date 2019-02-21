@@ -17,12 +17,13 @@ label {}
 
 // Text inputs and buttons
 select {
-	@include reset-appearance;
 }
 @include stylable-inputs {
 	line-height: inherit;
 	border: 1px solid $grey-medium;
 	padding: .25em 0.5em;
+	width: 30rem;
+	max-width: 100%;
 	box-sizing: border-box;
 	color: inherit;
 	border-radius: 2px;

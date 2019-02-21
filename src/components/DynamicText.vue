@@ -43,10 +43,5 @@ export default {
 }
 </script>
 
-<style scoped>
-	input[type="text"],
-	input[type="number"] {
-		width: 30rem;
-		max-width: 100%;
-	}
+<style>
 </style>
