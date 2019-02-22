@@ -35,6 +35,23 @@
 			<p><b>Lorem ipsum</b></p>
 			<p><b>Dolor sit amet</b></p>
 		</multiple-content>
+		
+		<hr>
+		<h2>Exposing internal component data with <code>slot-scope</code></h2>
+		<p>If you use variables in the template definition of a component, those variables will refer to the internal component data. In the same way, if you use variables in the content passed down from a parent, then those variables will refer to the parent's data.</p>
+		<p>There could be cases where you want to define content in the parent element, but have it refer to the internal data of the component, to make that possible:</p>
+		<ul>
+			<li>In the template definition of the component, bind data to the <code>&lt;slot&gt;</code> tag where you want the internal data to be available, e.g: <code>&lt;slot name="header" :title="this.title"&gt;</code></li>
+			<li>Then on the parent element you have to indicate that you'll be using the component's data by adding a <code>slot-scope</code> attribute to the same element that is targeting a template position using <code>slot</code>, the value you assign to the attribute will become the name of the object that holds the exposed component data, e.g: <code>slot="header" slot-scope="componentData"</code></li>
+			<li>Finally, on the content to be passed down to the component you can access the parent data as usual, e.g. <code v-pre>{{ title }}</code>. But you now also have access to the component's internal data, e.g. <code v-pre>{{ componentData.title }}</code></li>
+		</ul>
+		<exposed-content></exposed-content>
+		<exposed-content>
+			<template slot="header" slot-scope="componentData">
+				<p>Parent data: <b>{{ title }}</b></p>
+				<p>Internal data: <b>{{ componentData.title }}</b></p>
+			</template>
+		</exposed-content>
 	</div>
 </template>
 
@@ -60,7 +77,7 @@ Vue.component('simple-content', {
 });
 
 // Component with multiple content distribution
-Vue.component( 'multiple-content', {
+Vue.component('multiple-content', {
 	template: `
 		<section class="content-component">
 			<header>
@@ -81,11 +98,34 @@ Vue.component( 'multiple-content', {
 		</section>`,
 });
 
+// Component with exposed internal data
+Vue.component('exposed-content', {
+	data () {
+		return {
+			title: 'Internal Title',
+		}
+	},
+	template: `
+		<section class="content-component">
+			<header>
+				<slot name="header" :title="this.title">
+					<p>{{ this.title }}</p>
+				</slot>
+			</header>
+			<main>
+				<slot>
+					<p>No custom content received, displaying default content!.</p>
+				</slot>
+			</main>
+		</section>`,
+});
+
 // Export current component
 export default {
 	name: 'ComponentsContent',
 	data () {
 		return {
+			title: 'Parent Title',
 		}
 	},
 }
