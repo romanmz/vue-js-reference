@@ -52,6 +52,20 @@
 				<p>Internal data: <b>{{ componentData.title }}</b></p>
 			</template>
 		</exposed-content>
+		
+		<hr>
+		<h2>Overriding component templates</h2>
+		<p>Another option is to completely override the template of a component by adding an <code>inline-template</code> attribute, and adding the new content inside the tag.</p>
+		<p>When using this option any variables used in the content will refer to the internal component data.</p>
+		<exposed-content></exposed-content>
+		<exposed-content inline-template>
+			<section class="content-component">
+				<header>
+					<h3>{{ title }}</h3>
+					<p><b>This is an entirely different template!</b></p>
+				</header>
+			</section>
+		</exposed-content>
 	</div>
 </template>
 
@@ -108,8 +122,8 @@ Vue.component('exposed-content', {
 	template: `
 		<section class="content-component">
 			<header>
-				<slot name="header" :title="this.title">
-					<p>{{ this.title }}</p>
+				<slot name="header" :title="title">
+					<p>{{ title }}</p>
 				</slot>
 			</header>
 			<main>
