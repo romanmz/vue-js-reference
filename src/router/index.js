@@ -4,6 +4,7 @@ import DynamicText from '@/components/DynamicText'
 import AttributeDirectives from '@/components/AttributeDirectives'
 import ControlFlow from '@/components/ControlFlow'
 import Events from '@/components/Events'
+import Forms from '@/components/Forms'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
 			path: '/events/',
 			name: 'Events',
 			component: Events,
+		},
+		{
+			path: '/forms/',
+			name: 'Forms',
+			component: Forms,
 		},
 	],
 })
