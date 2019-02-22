@@ -5,6 +5,7 @@ import AttributeDirectives from '@/components/AttributeDirectives'
 import ControlFlow from '@/components/ControlFlow'
 import Events from '@/components/Events'
 import Forms from '@/components/Forms'
+import Components from '@/components/Components'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
 			path: '/forms/',
 			name: 'Forms',
 			component: Forms,
+		},
+		{
+			path: '/components/',
+			name: 'Components',
+			component: Components,
 		},
 	],
 })
