@@ -7,7 +7,11 @@
 				<li><router-link to="/control-flow/">Control Flow</router-link></li>
 				<li><router-link to="/events/">Events</router-link></li>
 				<li><router-link to="/forms/">Forms</router-link></li>
-				<li><router-link to="/components/">Components</router-link></li>
+				<li><router-link to="/components/">Components</router-link>
+					<ul>
+						<li><router-link to="/components/data/">Components Data</router-link></li>
+					</ul>
+				</li>
 			</ol>
 		</header>
 		<main class="app-main">

@@ -6,6 +6,7 @@ import ControlFlow from '@/components/ControlFlow'
 import Events from '@/components/Events'
 import Forms from '@/components/Forms'
 import Components from '@/components/Components'
+import ComponentsData from '@/components/ComponentsData'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
 			path: '/components/',
 			name: 'Components',
 			component: Components,
+		},
+		{
+			path: '/components/data/',
+			name: 'Components Data',
+			component: ComponentsData,
 		},
 	],
 })
