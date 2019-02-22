@@ -12,6 +12,7 @@
 						<li><router-link to="/components/data/">Components Data</router-link></li>
 						<li><router-link to="/components/model/">Components Model</router-link></li>
 						<li><router-link to="/components/content/">Components Content</router-link></li>
+						<li><router-link to="/components/dynamic/">Dynamic Components</router-link></li>
 					</ul>
 				</li>
 			</ol>
