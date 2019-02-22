@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import DynamicText from '@/components/DynamicText'
 import AttributeDirectives from '@/components/AttributeDirectives'
+import ControlFlow from '@/components/ControlFlow'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ export default new Router({
 			path: '/attributes/',
 			name: 'Attribute Directives',
 			component: AttributeDirectives,
+		},
+		{
+			path: '/control-flow/',
+			name: 'Control Flow',
+			component: ControlFlow,
 		},
 	],
 })
