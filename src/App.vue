@@ -1,13 +1,17 @@
 <template>
 	<div id="app">
-		<ul>
-			<li><router-link to="/">Dynamic Text</router-link></li>
-			<li><router-link to="/attributes/">Attribute Directives</router-link></li>
-			<li><router-link to="/control-flow/">Control Flow</router-link></li>
-			<li><router-link to="/events/">Events</router-link></li>
-			<li><router-link to="/forms/">Forms</router-link></li>
-		</ul>
-		<router-view/>
+		<header class="app-header">
+			<ol class="main-nav">
+				<li><router-link to="/">Dynamic Text</router-link></li>
+				<li><router-link to="/attributes/">Attribute Directives</router-link></li>
+				<li><router-link to="/control-flow/">Control Flow</router-link></li>
+				<li><router-link to="/events/">Events</router-link></li>
+				<li><router-link to="/forms/">Forms</router-link></li>
+			</ol>
+		</header>
+		<main class="app-main">
+			<router-view/>
+		</main>
 	</div>
 </template>
 
@@ -18,10 +22,20 @@ export default {
 </script>
 
 <style src="./assets/scss/global.scss" lang="scss"></style>
-<style>
+<style lang="scss">
 	#app {
 		margin: 2rem auto;
 		padding: 0 2rem;
 		max-width: 120rem;
+		display: grid;
+		grid-template-columns: 24rem auto;
+	}
+	.app-header {
+		margin-right: 4rem;
+	}
+	.main-nav {
+		.router-link-exact-active {
+			font-weight: bold;
+		}
 	}
 </style>
