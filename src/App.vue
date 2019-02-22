@@ -2,6 +2,7 @@
 	<div id="app">
 		<ul>
 			<li><router-link to="/">Dynamic Text</router-link></li>
+			<li><router-link to="/attributes/">Attribute Directives</router-link></li>
 		</ul>
 		<router-view/>
 	</div>
