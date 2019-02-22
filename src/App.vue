@@ -4,6 +4,7 @@
 			<li><router-link to="/">Dynamic Text</router-link></li>
 			<li><router-link to="/attributes/">Attribute Directives</router-link></li>
 			<li><router-link to="/control-flow/">Control Flow</router-link></li>
+			<li><router-link to="/events/">Events</router-link></li>
 		</ul>
 		<router-view/>
 	</div>
