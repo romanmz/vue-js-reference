@@ -13,6 +13,12 @@
 		<p>For better encapsulation of code, components need to white-list the properties they can receive from the parent (a component should never try to access the parent's data directly).</p>
 		<p>When defining the template for the component, you can only use properties defined as <code>data</code> or <code>props</code>, if there's overlap then <code>props</code> will be used over <code>data</code>.</p>
 		
+		<h3>Using local components</h3>
+		<p>Using <code>Vue.component()</code> registers a component globally, but you may want to have some components be available only on certain parts of the application.</p>
+		<p>To create a local component, simply create a plain object with the normal Vue settings, including the <code>template</code> property, then you manually pass this object to any <code>Vue</code> instances that need to use it by listing it on the <code>components</code> property.</p>
+		<p>Also include a <code>name</code> property to define the default name of the component (equivalent to the first argument of <code>Vue.component()</code>). This name can be overriden by the Vue instance that loads it in its <code>components</code> property.</p>
+		<local-component></local-component>
+		
 		<h3>Using <code>.vue</code> single-file components</h3>
 		<p>The normal workflow of defining global components with <code>Vue.component()</code> and initialising an app with <code>new Vue()</code> works fine on small projects, but on bigger projects the disadvantages of that workflow become apparent:</p>
 		<ul>
@@ -41,8 +47,24 @@
 </template>
 
 <script>
+
+// Create local component
+let simpleParagraph = {
+	name: 'simple-paragraph',
+	template: '<p><output>{{ text }}</output></p>',
+	data: function() {
+		return {
+			text: 'This is a local component!',
+		};
+	},
+};
+
+// Export current component
 export default {
 	name: 'Components',
+	components: {
+		'local-component': simpleParagraph,
+	},
 	data () {
 		return {
 		}
