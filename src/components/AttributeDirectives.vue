@@ -3,12 +3,12 @@
 		<h1>Attribute Directives</h1>
 		
 		<hr>
-		<h2>Text Attributes</h2>
+		<h2>Text attributes</h2>
 		<p>To add dynamic content to an attribute, use the <code>v-bind</code> directive, followed by a colon and the name of the type of attribute you want to add.</p>
 		<p>For example, to add a dynamic "title" attribute you can write <code>v-bind:title="message"</code> = <output v-bind:title="message">This element has a "title" attribute</output></p>
 		
 		<hr>
-		<h2>Class Attribute</h2>
+		<h2>Class attribute</h2>
 		<p>There's 4 ways to make the "class" attribute dynamic:</p>
 		<ol>
 			<li>Pass an object where each key is the class to be added, and the value is a boolean property that toggles that class on or off: <code>v-bind:class="{'is-active': isActive, 'is-completed': isCompleted}"</code> = <output v-bind:class="{'is-active': isActive, 'is-completed': isCompleted}">Class attribute with object</output></li>
@@ -18,7 +18,7 @@
 		</ol>
 		
 		<hr>
-		<h2>Inline Styles</h2>
+		<h2>Inline styles</h2>
 		<p>You have 3 options to handle the "style" attribute of an element:</p>
 		<ol>
 			<li>Pass an object where each key is the css property to add, and the value is the property name whose value should be used as is: <code>v-bind:style="{'color': dynamicColor, 'font-size': dynamicFontSize+'px'}"</code> = <output v-bind:style="{'color': dynamicColor, 'font-size': dynamicFontSize+'px'}">Inline styles with object</output></li>
@@ -28,7 +28,7 @@
 		<p>If you pass an array of strings as a value for a css property, vue will add only the last property in the list that is supported by the current browser. <code>v-bind:style="{display: ['-ms-grid', 'grid']}"</code> = <output v-bind:style="{display: ['-ms-grid', 'grid']}">Property with multiple values</output></p>
 		
 		<hr>
-		<h2>Short Syntax</h2>
+		<h2>Short syntax</h2>
 		<p>You can replace <code>v-bind</code> with just <code>:</code> for a shorter syntax. <code>:title="message"</code> = <output :title="message">Shorthand for the "v-bind" directive</output></p>
 		
 		<hr>

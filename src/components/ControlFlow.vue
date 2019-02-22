@@ -3,9 +3,9 @@
 		<h1>Control Flow</h1>
 		
 		<hr>
-		<h2>Conditional Directives</h2>
+		<h2>Conditional directives</h2>
 		
-		<h3><code>v-if</code>, <code>v-else-if</code> and <code>v-else</code> Directives</h3>
+		<h3><code>v-if</code>, <code>v-else-if</code> and <code>v-else</code> directives</h3>
 		<p>Use these directives to show or hide content based on a given instance property, you can add those directives on a regular element, or on a &lt;template&gt; tag if you need them to apply to multiple elements at once:</p>
 		<template v-if="toggle1">
 			<p><strong>Optional Content 1</strong></p>
@@ -20,10 +20,10 @@
 			<p>Curabitur pulvinar lacinia aliquet. Pellentesque accumsan scelerisque hendrerit. Vivamus mollis, nibh ac elementum ultricies, neque nisl elementum nisl.</p>
 		</template>
 		
-		<h3><code>Key</code> Attribute</h3>
+		<h3><code>Key</code> attribute</h3>
 		<p>When toggling between elements Vue will try to reuse existing elements as much as possible to avoid having to constantly generate and inject new elements, in some cases this may cause some info to be incorrectly transferred from one state to the other, to make sure an element is always refreshed from scratch, add a <code>key</code> attribute with a unique value to it.</p>
 		
-		<h3><code>v-show</code> Directive</h3>
+		<h3><code>v-show</code> directive</h3>
 		<p>You can also use the <code>v-show</code> directive which does something similar but with some small differences:</p>
 		<ul>
 			<li>the element will always exist in the DOM and will be toggled using just CSS</li>

@@ -3,7 +3,7 @@
 		<h1>Events</h1>
 		
 		<hr>
-		<h2>Event Handlers</h2>
+		<h2>Event handlers</h2>
 		<p>Use the <code>v-on</code> directive to attach handler functions to a given event.</p>
 		<p>You can either call an existing instance method: <code>v-on:click="reverseMessage"</code>, or directly perform some operations: <code>v-on:click="number++"</code>.</p>
 		<p>If you need to pass the "event" object to the callback function, use the special <b>$event</b> variable <code>v-on:click="methodName( $event )"</code>.</p>
@@ -15,7 +15,7 @@
 		</p>
 		
 		<hr>
-		<h2>Event Modifiers</h2>
+		<h2>Event modifiers</h2>
 		<p>Event modifiers allows you to quickly add extra actions to an event handler, for example adding the <code>v-on:click.prevent="methodName"</code> modifier will automatically call <code>e.preventDefault()</code> when that event is triggered.</p>
 		<p>The available modifiers are:</p>
 		<ul>
@@ -30,7 +30,7 @@
 		<p>You can also add only the modifiers without specifying a statement or method, the modifiers will still be applied to the element even if no further action was added.</p>
 		
 		<hr>
-		<h2>Key Modifiers</h2>
+		<h2>Key modifiers</h2>
 		<p>Key modifiers allows you to quickly assign an action when the user presses a particular key without you having to write the logic yourself everytime.</p>
 		<p><output>{{ message }} {{ number }}</output></p>
 		<ul>
@@ -49,7 +49,7 @@
 		<p>You can also use any of the standard key <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values" target="_blank">Key Values</a>, converted to "kebab-case", e.g: for <code>CapsLock</code>, use <code>caps-lock</code>.</p>
 		
 		<hr>
-		<h2>System Modifier Keys</h2>
+		<h2>System modifier keys</h2>
 		<p>The <code>.ctrl</code>, <code>.alt</code>, <code>.shift</code>, and <code>.meta</code> modifiers trigger the events only if the corresponding key is being pressed by the user when the event happens (so they always have to be coupled with an event or with a different key, they don't trigger the event just by pressing the key like with the regular key modifiers).</p>
 		<p>The <code>.exact</code> modifier makes it so the event is triggered only when the user presses that exact combination of keys (without it the event is triggered when the specified keys are pressed even if there's other keys pressed at the same time).</p>
 		<p>If the <code>.exact</code> modifier is added with no additional key modifiers, then it will run the event only if there are no system modifier keys pressed at all.</p>
@@ -64,7 +64,7 @@
 		</ul>
 		
 		<hr>
-		<h2>Mouse Button Identifiers</h2>
+		<h2>Mouse button identifiers</h2>
 		<p>Use the <code>.left</code>, <code>.right</code>, and <code>.middle</code> modifiers to trigger an event only when the user used the corresponding mouse button to trigger it.</p>
 		<p><output>{{ message }} {{ number }}</output></p>
 		<ul>
@@ -74,7 +74,7 @@
 		</ul>
 		
 		<hr>
-		<h2>Short Syntax</h2>
+		<h2>Short syntax</h2>
 		<p><output>{{ message }} {{ number }}</output></p>
 		<p>You can replace <code>v-on</code> with just <code>@</code> for a shorter syntax.</p>
 		<p><code>@click="number++"</code> = <button class="button" @click="number++">Shorthand for the "v-on" directive</button></p>

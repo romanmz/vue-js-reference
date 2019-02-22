@@ -3,7 +3,7 @@
 		<h1>Forms</h1>
 		
 		<hr>
-		<h2>Input Bindings</h2>
+		<h2>Input bindings</h2>
 		<p>Use the <code>v-model</code> directive to bind a form element to an instance property, any changes to the data made by the user will be reflected immediately across the application.</p>
 		<ul>
 			<li>String input: <output>{{ stringInput }}</output></li>

@@ -3,7 +3,7 @@
 		<h1>Dynamic Text</h1>
 		
 		<hr>
-		<h2>Text Interpolation</h2>
+		<h2>Text interpolation</h2>
 		<p>Use <code v-pre>{{ brackets }}</code> to add dynamic text: <output>{{ message }}</output></p>
 		<p>You can run javascript code inside the brackets to modify the content before outputting it, for example:</p>
 		<ul>
@@ -13,7 +13,7 @@
 		</ul>
 		
 		<hr>
-		<h2>Text Directives</h2>
+		<h2>Text directives</h2>
 		<p>You can use the <code>v-text</code> directive instead of brackets to output content: <output><span v-text="message"></span></output></p>
 		<p>If you need to display HTML content, then use the <code>v-html</code> directive instead: <output><span v-html="messageHTML"></span></output></p>
 		<p>Use the <code>v-once</code> directive to display and lock content with its initial value: <output v-once>{{ message }}</output></p>
