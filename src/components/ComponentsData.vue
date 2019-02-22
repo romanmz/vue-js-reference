@@ -1,5 +1,5 @@
 <template>
-	<div class="section-components">
+	<div class="section-components-data">
 		<h1>Components Data</h1>
 		
 		<hr>

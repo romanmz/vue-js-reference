@@ -10,6 +10,7 @@
 				<li><router-link to="/components/">Components</router-link>
 					<ul>
 						<li><router-link to="/components/data/">Components Data</router-link></li>
+						<li><router-link to="/components/model/">Components Model</router-link></li>
 					</ul>
 				</li>
 			</ol>

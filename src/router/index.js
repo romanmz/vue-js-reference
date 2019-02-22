@@ -7,6 +7,7 @@ import Events from '@/components/Events'
 import Forms from '@/components/Forms'
 import Components from '@/components/Components'
 import ComponentsData from '@/components/ComponentsData'
+import ComponentsModel from '@/components/ComponentsModel'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
 			path: '/components/data/',
 			name: 'Components Data',
 			component: ComponentsData,
+		},
+		{
+			path: '/components/model/',
+			name: 'Components Model',
+			component: ComponentsModel,
 		},
 	],
 })
