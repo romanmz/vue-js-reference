@@ -8,6 +8,7 @@ import Forms from '@/components/Forms'
 import Components from '@/components/Components'
 import ComponentsData from '@/components/ComponentsData'
 import ComponentsModel from '@/components/ComponentsModel'
+import ComponentsContent from '@/components/ComponentsContent'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
 			path: '/components/model/',
 			name: 'Components Model',
 			component: ComponentsModel,
+		},
+		{
+			path: '/components/content/',
+			name: 'Components Content',
+			component: ComponentsContent,
 		},
 	],
 })

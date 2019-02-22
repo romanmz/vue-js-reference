@@ -11,6 +11,7 @@
 					<ul>
 						<li><router-link to="/components/data/">Components Data</router-link></li>
 						<li><router-link to="/components/model/">Components Model</router-link></li>
+						<li><router-link to="/components/content/">Components Content</router-link></li>
 					</ul>
 				</li>
 			</ol>
@@ -34,7 +35,7 @@ export default {
 		padding: 0 2rem;
 		max-width: 120rem;
 		display: grid;
-		grid-template-columns: 24rem auto;
+		grid-template-columns: 26rem auto;
 	}
 	.app-header {
 		margin-right: 4rem;
