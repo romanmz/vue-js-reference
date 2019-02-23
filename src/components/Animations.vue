@@ -107,6 +107,18 @@
 			</transition>
 		</p>
 		<p><button class="button" @click="toggle = !toggle">Toggle elements</button></p>
+		
+		<hr>
+		<h2>Animating items within a collection</h2>
+		<p>When a collection of elements within a <code>&lt;transition-group&gt;</code> tag are reordered, Vue automatically animates the items to create a smooth transition on all the elements, but you may still need to tweak the animation using the <code><i>v</i>-move</code> css class.</p>
+		<p>
+			<button class="button" @click="collectionAdd">Add</button>
+			<button class="button" @click="collectionRemove">Remove</button>
+			<button class="button" @click="collectionShuffle">Shuffle</button>
+		</p>
+		<transition-group tag="ul" class="shuffle-list" name="shuffle">
+			<li v-for="item in list" :key="item">{{ item }}</li>
+		</transition-group>
 	</div>
 </template>
 
@@ -117,6 +129,8 @@ export default {
 		return {
 			toggle: false,
 			velocityJsLoaded: false,
+			list: [1,2,3,4,5,6,7,8,9,10],
+			listNext: 11,
 		}
 	},
 	mounted() {
@@ -164,6 +178,20 @@ export default {
 		transitionAfterAppear(element) {},
 		transitionAppearCancelled(element) {},
 		
+		// Collection animation
+		// ------------------------------
+		collectionRandomIndex() {
+			return Math.floor( Math.random() * this.list.length );
+		},
+		collectionAdd() {
+			this.list.splice( this.collectionRandomIndex(), 0, this.listNext++ );
+		},
+		collectionRemove() {
+			this.list.splice( this.collectionRandomIndex(), 1 );
+		},
+		collectionShuffle() {
+			this.list.sort( () => Math.random() < Math.random() ? -1 : 1 );
+		},
 	},
 }
 </script>
@@ -212,4 +240,38 @@ export default {
 	// Move
 	.slide-move {}
 	
+	// Shuffle animation
+	// ------------------------------
+	.shuffle-list {
+		list-style: none;
+		padding: 0;
+		
+		li {
+			display: inline-block;
+			line-height: 2.1;
+			height: 2em;
+			min-width: 2em;
+			box-sizing: border-box;
+			text-align: center;
+			border: 1px solid #CCC;
+			margin: .25em;
+		}
+	}
+	.shuffle-enter-active,
+	.shuffle-leave-active,
+	.shuffle-move {
+		transition: opacity 1s, transform 1s;
+	}
+	.shuffle-enter {
+		opacity: 0;
+		transform: translateY( -1em );
+	}
+	.shuffle-leave-active {
+		// fix for smoother transitions
+		position: absolute;
+	}
+	.shuffle-leave-to {
+		opacity: 0;
+		transform: translateY( 1em );
+	}
 </style>
