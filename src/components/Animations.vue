@@ -45,14 +45,25 @@
 		
 		<hr>
 		<h2>Extra settings</h2>
+		<p>These attributes are available on both <code>&lt;transition&gt;</code> and <code>&lt;transition-group&gt;</code> tags:</p>
 		<ul>
 			<li><code>name</code> changes the class names to be added on each animation step, e.g. setting <code>name="fade"</code> will add classes like <code>fade-enter-active</code></li>
-			<li><code>mode</code> defines whether to animate both "enter" and "leave" items at the same time, or to do it sequentially with <code>mode="in-out"</code> or <code>mode="out-in"</code>. <strong>NOTE:</strong> this is not available on the <code>&lt;transition-group&gt;</code> tag</li>
 			<li><code>enter-class</code>, <code>enter-active-class</code>, etc… lets you define different CSS classes for each animation step instead of the ones generated automatically</li>
 			<li><code>appear</code> if set to true, applies transitions to the element on initial render. defaults to false</li>
 			<li><code>css</code> defines whether or not to apply the CSS classes to the element. defaults to true</li>
-			<li><code>type</code> defines what css property to look for to determine the total length of the transitions, options are <code>transition</code> and <code>animation</code>, or you can pass a number to set it manually. defaults to the css property with the longest duration</li>
+			<li><code>type</code> defines what css property to look for to determine the total length of the transitions, options are <code>transition</code> and <code>animation</code>. defaults to the one with the longest duration</li>
 		</ul>
+		<p>The following ones are only available on the <code>&lt;transition&gt;</code> element:</p>
+		<ul>
+			<li><code>mode</code> defines whether to animate both "enter" and "leave" items at the same time, or to do it sequentially with <code>mode="in-out"</code> or <code>mode="out-in"</code></li>
+			<li><code>duration</code> you can use this property to define an explicit duration (overrides the <code>type</code> setting), you can pass a single number for both "enter" and "leave" transitions, e.g. <code>1000</code>, or pass an object to set a different duration for each event, e.g. <code>{enter: 500, leave: 800}</code></li>
+		</ul>
+		<p>And these are available only on the <code>&lt;transition-group&gt;</code> tag:</p>
+		<ul>
+			<li><code>tag</code> defines what type of element to create as a wrapper, defaults to "span"</li>
+			<li><code>move-class</code> overwrites the css class to add during "moving" transitions</li>
+		</ul>
+		
 		<h3>Examples of custom animations</h3>
 		<ul>
 			<li><code>name="slide"</code>:
@@ -69,6 +80,14 @@
 					</transition>
 				</span>
 			</li>
+			<li><code>name="slide" mode="out-in" duration="3000"</code>:
+				<span>
+					<transition name="slide" mode="out-in" duration="3000">
+						<strong v-if="toggle" key="yes">Yes!</strong>
+						<strong v-else key="no">No!</strong>
+					</transition>
+				</span>
+			</li>
 			<li><code>name="slide" appear</code>:
 				<transition-group name="slide" appear>
 					<strong v-if="toggle" key="yes">Yes!</strong>
@@ -76,6 +95,17 @@
 				</transition-group>
 			</li>
 		</ul>
+		<p><button class="button" @click="toggle = !toggle">Toggle elements</button></p>
+		
+		<hr>
+		<h2>Listening to Javascript events</h2>
+		<p>When using javascript-only animations, it is recommended to add a <code>css="false"</code> attribute to prevent css rules being added and accidentally altering the animation.</p>
+		<p>Javascript-based animation:
+			<transition :css="false" @enter="transitionEnter" @leave="transitionLeave">
+				<strong v-if="toggle" key="yes">Yes!</strong>
+				<strong v-else key="no">No!</strong>
+			</transition>
+		</p>
 		<p><button class="button" @click="toggle = !toggle">Toggle elements</button></p>
 	</div>
 </template>
@@ -87,6 +117,50 @@ export default {
 		return {
 			toggle: false,
 		}
+	},
+	mounted() {
+		// Load an external script
+		let velocityScript = document.createElement('script');
+		velocityScript.setAttribute('src', '//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js');
+		document.head.appendChild(velocityScript)
+	},
+	methods: {
+		
+		// Transition events
+		// ------------------------------
+		transitionBeforeEnter(element) {},
+		transitionEnter(element, done) {
+			// call done() to mark the end of the animation, optional when using css-based transitions/animations
+			// you can stagger the animations by adding different delays to each individual items (e.g. with a timeout call)
+			if( typeof Velocity != 'function') return;
+			if( window.getComputedStyle(element).display == 'inline' ) {
+				element.style.display = 'inline-block'
+			}
+			Velocity( element, {scale: 2}, {duration: 500} );
+			Velocity( element, {scale: 1}, {complete: done} );
+		},
+		transitionAfterEnter(element) {},
+		transitionEnterCancelled(element) {},
+		
+		transitionBeforeLeave(element) {},
+		transitionLeave(element, done) {
+			if( typeof Velocity != 'function') return;
+			if( window.getComputedStyle(element).display == 'inline' ) {
+				element.style.display = 'inline-block'
+			}
+			element.style.position = 'absolute'
+			Velocity( element, {translateX: '15px', rotateZ: '50deg'}, {duration: 600} );
+			Velocity( element, {rotateZ: '100deg'}, {loop: 2} );
+			Velocity( element, {rotateZ: '45deg', translateY: '30px', translateX: '30px', opacity: 0}, {complete: done} );
+		},
+		transitionAfterLeave(element) {},
+		transitionLeaveCancelled(element) {},
+		
+		transitionBeforeAppear(element) {},
+		transitionAppear(element, done) {},
+		transitionAfterAppear(element) {},
+		transitionAppearCancelled(element) {},
+		
 	},
 }
 </script>
