@@ -119,10 +119,36 @@
 		<transition-group tag="ul" class="shuffle-list" name="shuffle">
 			<li v-for="item in list" :key="item">{{ item }}</li>
 		</transition-group>
+		
+		<hr>
+		<h2>Reusable animation settings</h2>
+		<p>You can create components with a <code>&lt;transition&gt;</code> tag as the root element, and with one or more <code>&lt;slot&gt;</code> tags, and set attributes with dynamic props</p>
+		<bounce-transition>
+			<strong v-if="toggle" key="yes">Yes!</strong>
+			<strong v-else key="no">No!</strong>
+		</bounce-transition>
+		<bounce-transition>
+			<strong v-if="toggle" key="yes">Also yes, no need to rewrite the same animation settings all over again!</strong>
+			<strong v-else key="no">No!</strong>
+		</bounce-transition>
+		<p><button class="button" @click="toggle = !toggle">Toggle elements</button></p>
+		
+		
 	</div>
 </template>
 
 <script>
+import Vue from 'vue'
+
+// Example of a simple reusable animation
+Vue.component('bounce-transition', {
+	template: `
+		<transition-group tag="p" name="bounce" appear>
+			<slot></slot>
+		</transition>`,
+})
+
+// Export current component
 export default {
 	name: 'Animations',
 	data () {
@@ -274,4 +300,15 @@ export default {
 		opacity: 0;
 		transform: translateY( 1em );
 	}
+	
+	// Bounce animation
+	// ------------------------------
+	@keyframes bounce-in {
+		0% { transform: scale(0); opacity: 0; }
+		50% { transform: scale(1.5) }
+		100% { transform: scale(1); opacity: 1; }
+	}
+	.bounce-enter-active { animation: bounce-in .5s }
+	.bounce-leave-active { animation: bounce-in .5s reverse; position: absolute; }
+	
 </style>
