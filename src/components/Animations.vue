@@ -116,12 +116,15 @@ export default {
 	data () {
 		return {
 			toggle: false,
+			velocityJsLoaded: false,
 		}
 	},
 	mounted() {
-		// Load an external script
-		let velocityScript = document.createElement('script');
-		velocityScript.setAttribute('src', '//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js');
+		// Load Velocity.js
+		let velocityScript = document.createElement('script')
+		velocityScript.onload = () => { this.velocityJsLoaded = true }
+		velocityScript.async = true
+		velocityScript.src = '//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js'
 		document.head.appendChild(velocityScript)
 	},
 	methods: {
