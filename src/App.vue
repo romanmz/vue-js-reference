@@ -15,6 +15,7 @@
 						<li><router-link to="/components/dynamic/">Dynamic Components</router-link></li>
 					</ul>
 				</li>
+				<li><router-link to="/animations/">Animations</router-link></li>
 			</ol>
 		</header>
 		<main class="app-main">

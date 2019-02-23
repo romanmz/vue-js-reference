@@ -10,6 +10,7 @@ import ComponentsData from '@/components/ComponentsData'
 import ComponentsModel from '@/components/ComponentsModel'
 import ComponentsContent from '@/components/ComponentsContent'
 import ComponentsDynamic from '@/components/ComponentsDynamic'
+import Animations from '@/components/Animations'
 
 Vue.use(Router)
 
@@ -64,6 +65,11 @@ export default new Router({
 			path: '/components/dynamic/',
 			name: 'Dynamic Components',
 			component: ComponentsDynamic,
+		},
+		{
+			path: '/animations/',
+			name: 'Animations',
+			component: Animations,
 		},
 	],
 })
