@@ -145,7 +145,7 @@ Vue.component('bounce-transition', {
 	template: `
 		<transition-group tag="p" name="bounce" appear>
 			<slot></slot>
-		</transition>`,
+		</transition-group>`,
 })
 
 // Export current component
