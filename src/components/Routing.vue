@@ -209,12 +209,12 @@ const router = new VueRouter({
 			alias: '/alias',
 		},
 		{
-			name: 'user',
 			path: '/user/:id',
 			component: UserPage,
 			props: true,
 			children: [
 				{
+					name: 'user',
 					path: '',
 					component: UserPageHome,
 				},
