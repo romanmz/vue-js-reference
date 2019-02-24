@@ -33,10 +33,20 @@
 		</ul>
 		<p><output v-describe v-log:foo.bar="123">Testing callback functions on a custom directive</output></p>
 		
+		<hr>
+		<h2>Custom filters</h2>
+		<p>Filters are functions that can be applied to <code v-pre>{{ interpolated text }}</code> or <code>v-bind</code> directives, you can chain filters and pass arguments to them like with any other function.</p>
+		<p>To register a custom filter globally use the <code>Vue.filter()</code> method, to pass it to individual Vue instances and components include it in their <code>filters</code> property.</p>
+		<p>To use filters simply add a pipe character followed by the name of the filter, you can chain multiple filters at once, e.g. <code v-pre>{{ message | filter1 | filter2 }}</code>. To pass arguments to filters that require them, include them inside parentheses as if they were regular functions <code v-pre>{{ message | filter( argument1, argument2) }}</code>.</p>
+		<p>Testing custom filters:</p>
+		<p><output>{{ 'Uppercase Filter' | uppercase }}</output> <output>{{ 'Repeat Filter ' | repeat(2) }}</output></p>
+		<p><output>{{ 'Chained Filters ' | uppercase | repeat(2) }}</output></p>
+		
 	</div>
 </template>
 
 <script>
+
 
 // Mixins
 // ------------------------------
@@ -87,11 +97,24 @@ let describeMixin = {
 let logMixin = (el, binding, vnode) => { console.log( binding ) }
 
 
+// Custom filters
+// ------------------------------
+let uppercaseFilter = value => value.toUpperCase()
+let repeatFilter = (value, repeat) => {
+	let finalValue = value;
+	for( let i=0; i<repeat; i++) {
+		finalValue += value;
+	}
+	return finalValue;
+}
+
+
 // ------------------------------
 export default {
 	name: 'ReusableSettings',
 	mixins: [cardMixin],
 	directives: {describe: describeMixin, log: logMixin},
+	filters: {uppercase: uppercaseFilter, repeat: repeatFilter},
 }
 </script>
 
