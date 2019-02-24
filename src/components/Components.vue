@@ -52,7 +52,7 @@
 let simpleParagraph = {
 	name: 'simple-paragraph',
 	template: '<p><output>{{ text }}</output></p>',
-	data: function() {
+	data() {
 		return {
 			text: 'This is a local component!',
 		};

@@ -86,13 +86,13 @@ Vue.component('todo-item', {
 				<label><input type="checkbox" v-model="completed"> {{ text }}</label>      &nbsp; <input type="text" @input="emitEvent" v-model="text">
 			</template>
 		</div>`,
-	data: function() {
+	data() {
 		return {
 			localText: this.text,
 		}
 	},
 	methods: {
-		emitEvent: function() {
+		emitEvent() {
 			if( this.useSynced ) {
 				this.$emit( 'update:text', this.text );
 			}
@@ -113,10 +113,10 @@ export default {
 		}
 	},
 	methods: {
-		catchEvent: function() {
+		catchEvent() {
 			this.message = 'emitted event!';
 		},
-		clickEvent: function() {
+		clickEvent() {
 			this.message = 'native event!';
 		},
 	},

@@ -68,7 +68,7 @@ Vue.component('number-input', {
 			</label>
 		</p>`,
 	methods: {
-		updateValue: function(e) {
+		updateValue(e) {
 			this.$emit( 'input', Number( e.target.value ) );
 		},
 	},
@@ -89,7 +89,7 @@ Vue.component('boolean-input', {
 			</label>
 		</p>`,
 	methods: {
-		updateValue: function(e) {
+		updateValue(e) {
 			this.$emit( 'change', e.target.checked );
 		},
 	},

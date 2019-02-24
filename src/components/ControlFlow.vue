@@ -83,7 +83,7 @@ export default {
 		}
 	},
 	methods: {
-		getOddItems: function( items ) {
+		getOddItems( items ) {
 			return items.filter( (todo, i) => i%2 === 0 );
 		},
 	},

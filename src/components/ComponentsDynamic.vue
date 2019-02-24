@@ -16,10 +16,10 @@
 		<p>When using dynamic components you can use any tag as placeholder, but best practice is to use <code>&lt;component&gt;</code>.</p>
 		
 		<h3>Preserving state</h3>
-		<p>By default, whenever you switch components their data is destroyed and created from scratch every time. If you want to preserve the state of a component, wrap it inside a <code>&lt;kee-alive&gt;</code> tag.</p>
+		<p>By default, whenever you switch components their data is destroyed and created from scratch every time. If you want to preserve the state of a component, wrap it inside a <code>&lt;keep-alive&gt;</code> tag.</p>
 		<ul>
-			<li>without <code>&lt;kee-alive&gt;</code> = <component :is="currentComponent" show-input="1"></component></li>
-			<li>with <code>&lt;kee-alive&gt;</code> = <keep-alive><component :is="currentComponent" show-input="1"></component></keep-alive></li>
+			<li>without <code>&lt;keep-alive&gt;</code> = <component :is="currentComponent" show-input="1"></component></li>
+			<li>with <code>&lt;keep-alive&gt;</code> = <keep-alive><component :is="currentComponent" show-input="1"></component></keep-alive></li>
 		</ul>
 		
 		<hr>
@@ -133,7 +133,7 @@ export default {
 		asyncHolderFailed,
 	},
 	methods: {
-		switchCurrentComponent: function() {
+		switchCurrentComponent() {
 			this.currentComponent = this.currentComponent === 'simple-component-1' ? 'simple-component-2' : 'simple-component-1';
 		},
 	},

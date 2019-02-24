@@ -86,13 +86,13 @@ export default {
 		}
 	},
 	computed: {
-		classAttribute: function() {
+		classAttribute() {
 			return {
 				'is-active': this.isActive,
 				'is-completed': this.isCompleted,
 			}
 		},
-		styleAttribute: function() {
+		styleAttribute() {
 			return {
 				'color': this.dynamicColor,
 				'font-size': this.dynamicFontSize+'px',

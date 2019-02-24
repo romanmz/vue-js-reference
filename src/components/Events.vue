@@ -91,10 +91,10 @@ export default {
 		}
 	},
 	methods: {
-		reverseMessage: function(){
+		reverseMessage(){
 			this.message = this.message.split('').reverse().join('');
 		},
-		call: function( message ) {
+		call( message ) {
 			alert( message );
 		},
 	},
