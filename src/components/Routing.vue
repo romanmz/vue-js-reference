@@ -33,6 +33,9 @@
 			<li><code>beforeEach</code> registers a callback function that runs before each route is resolved</li>
 			<li><code>beforeResolve</code> similar to <code>beforeEach</code> but runs after all in-component guards and async route components have been resolved, but still before the route is resolved</li>
 			<li><code>afterEach</code> registers a callback function that runs after each route has been resolved</li>
+			<li><code>push</code> navigates to the specified route, you can pass a string or an object with the same format as the route settings object</li>
+			<li><code>replace</code> same as <code>push</code> but without registering the change on the browser history</li>
+			<li>Plus a few others like <code>go</code>, <code>back</code>, <code>forward</code>, etc.</li>
 		</ul>
 		
 		<h3>Route objects</h3>
@@ -63,11 +66,58 @@
 		
 		<h3>Route-related component properties</h3>
 		<ul>
+			<li><code>this.$router</code>: Holds a reference to the registered router instance</li>
 			<li><code>this.$route</code>: You can inspect this property to obtain information about the current route. When switching between routes that share the same component, the component lifecycle hooks may not be triggered, so to detect route changes within the same component watch for changes to the <code>$route</code> property or use the following hooks:</li>
 			<li><code>beforeRouteEnter</code>: Runs before the route that loads the component is confirmed. <code>this</code> is not available on this guard, but you can pass a callback function to the <code>next</code> function, which will receive the component instance as an argument</li>
 			<li><code>beforeRouteUpdate</code>: Runs when the route changes to another path that uses the same component</li>
 			<li><code>beforeRouteLeave</code> Runs when the route is about to change to another one that uses a different component</li>
 		</ul>
+		
+		<h3>The <code>next()</code> function</h3>
+		<p>The navigation guard functions receive a <code>next</code> function you need to manually trigger from within those functions to make sure the route is actually resolved</p>
+		<p>You can use it in four different ways:</p>
+		<ul>
+			<li><code>next()</code> confirm the requested navigation</li>
+			<li><code>next( false )</code> abort navigation, go back to the previous page</li>
+			<li><code>next( '/' )</code> redirect to another route</li>
+			<li><code>next( Error )</code> throws an error</li>
+		</ul>
+		
+		<hr>
+		<h2>Routing components</h2>
+		<h3>The <code>&lt;router-view&gt;</code> component</h3>
+		<p>Use it as a placeholder to be replaced with the actual components for each route.</p>
+		<p>You can include multiple placeholders as long as you identify them with a <code>name</code> attribute, you can only leave one unnamed (which will be automatically named "default")</p>
+		<h3>The <code>&lt;router-link&gt;</code> component</h3>
+		<p>Use router link components to autogenerate navigation links.</p>
+		<p>Possible attributes are:</p>
+		<ul>
+			<li><code>to</code> the path to link to (required)</li>
+			<li><code>replace</code> if set to true, visits to this link won't be registered on the history</li>
+			<li><code>append</code> makes it a relative link instead of absolute</li>
+			<li><code>tag</code> specifies the tag to use to create the links, defaults to <code>a</code></li>
+			<li><code>active-class</code> the class name to apply to current page and ancestor links, defaults to <code>router-link-active</code></li>
+			<li><code>exact-active-class</code> the class name to apply to current page links, defaults to <code>router-link-exact-active</code></li>
+			<li><code>exact</code> adds the active class only when strictly matching the same route, for example if the current page has a trailing slash but the route doesn't then it's not a match</li>
+			<li><code>event</code> specifies the event on the link that will trigger the navigation, defaults to <code>click</code></li>
+		</ul>
+		
+		<hr>
+		<h2>Testing route options</h2>
+		<div class="routes-example">
+			<div>
+				<ul>
+					<li><router-link to="/home">Home Page</router-link></li>
+					<li><router-link to="/foo">Simple Page</router-link></li>
+					<li><router-link to="/user/4">User #4</router-link></li>
+					<li><router-link to="/redirect">Redirect</router-link></li>
+					<li><router-link to="/alias">Alias</router-link></li>
+				</ul>
+			</div>
+			<router-view></router-view>
+			<router-view name="sidebar"></router-view>
+		</div>
+		
 	</div>
 </template>
 
@@ -159,6 +209,7 @@ const router = new VueRouter({
 			alias: '/alias',
 		},
 		{
+			name: 'user',
 			path: '/user/:id',
 			component: UserPage,
 			props: true,
@@ -203,5 +254,21 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.routes-example {
+	display: grid;
+	grid-template-columns: auto 3fr 1fr;
+	
+	> * {
+		padding: 1em;
+	}
+	> :nth-child( 1 ),
+	> :nth-child( 3 ) {
+		background: #EEE;
+	}
+	footer {
+		padding: 1em 0;
+		border-top: 1px solid #999;
+	}
+}
 </style>
