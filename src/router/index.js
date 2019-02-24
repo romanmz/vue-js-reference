@@ -14,6 +14,7 @@ import Animations from '@/components/Animations'
 import RenderFunction from '@/components/RenderFunction'
 import ReusableSettings from '@/components/ReusableSettings'
 import Routing from '@/components/Routing'
+import StateManagement from '@/components/StateManagement'
 import ServerSideRendering from '@/components/ServerSideRendering'
 
 Vue.use(Router)
@@ -90,6 +91,11 @@ export default new Router({
 			path: '/routing/',
 			name: 'Routing',
 			component: Routing,
+		},
+		{
+			path: '/state-management/',
+			name: 'StateManagement',
+			component: StateManagement,
 		},
 		{
 			path: '/server-side-rendering/',
