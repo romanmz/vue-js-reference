@@ -91,7 +91,7 @@ let cardMixin = {
 
 // Custom directives
 // ------------------------------
-let describeMixin = {
+let describeDirective = {
 	bind( el, binding, vnode ) {},
 	inserted( el, binding, vnode ) {
 		console.log( `Tag name: ${el.tagName}. Number of children: ${vnode.children.length}` );
@@ -100,7 +100,7 @@ let describeMixin = {
 	componentUpdated( el, binding, vnode, oldVnode ) {},
 	unbind( el, binding, vnode ) {},
 }
-let logMixin = (el, binding, vnode) => { console.log( binding ) }
+let logDirective = (el, binding, vnode) => { console.log( binding ) }
 
 
 // Custom filters
@@ -139,7 +139,7 @@ Vue.globalMethod()
 export default {
 	name: 'ReusableSettings',
 	mixins: [cardMixin],
-	directives: {describe: describeMixin, log: logMixin},
+	directives: {describe: describeDirective, log: logDirective},
 	filters: {uppercase: uppercaseFilter, repeat: repeatFilter},
 }
 </script>
