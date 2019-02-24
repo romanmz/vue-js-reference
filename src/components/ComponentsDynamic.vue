@@ -45,12 +45,34 @@
 			<li>Async holder that succeeds: <async-holder></async-holder></li>
 			<li>Async holder that fails: <async-holder-failed></async-holder-failed></li>
 		</ul>
+		
+		<hr>
+		<h2>Functional components</h2>
+		<p>If you create a component that is stateless (has no <code>data</code>) and instanceless (<code>this</code> context is not used), then you can mark it as <code>functional</code>. Components marked as functional are much cheaper to render, however they won't show up on the Vue devtools panel.</p>
+		<p>Functional components are useful for when you need to dynamically load other components based on the received <code>props</code>, or to alter the data before passing it to child components.</p>
+		<p>To mark a single-file component as functional just add a <code>functional</code> attribute to the root tag, e.g. <code>&lt;template functional&gt;</code>. On Vue instances and components, just add it as a property of the configuration object with its value set to <code>true</code>, e.g. <code>{functional: true}</code>.</p>
+		<h3>Differences between regular and functional components</h3>
+		<ol>
+			<li><code>props</code> are optional on functional components, if ommited they will be extracted automatically from the component's html attributes</li>
+			<li>On functional components you can't access any data using <code>this</code>, instead you'll receive all component data as a 2nd argument on the <code>render</code> function</li>
+		</ol>
+		<h3>Test components</h3>
+		<functional-component number="1">
+			<p>Hello world!</p>
+		</functional-component>
+		<functional-component number="2">
+			<p>Hello world!</p>
+		</functional-component>
+		
+		
 	</div>
 </template>
 
 <script>
 
+
 // Simple components for testing
+// ------------------------------
 let simpleComponent1 = {
 	name: 'simple-component-1',
 	props: ['showInput'],
@@ -80,7 +102,9 @@ let simpleComponent2 = {
 		</span>`,
 }
 
+
 // Asynchronous components
+// ------------------------------
 let asyncComponent = (resolve, reject) => {
 	setTimeout( ()=>{
 		resolve({
@@ -94,7 +118,9 @@ let asyncComponentFailed = (resolve, reject) => {
 	}, 2000 );
 }
 
+
 // Asynchronous holder
+// ------------------------------
 let asyncLoading = {
 	template: `<code>LOADING!</code>`,
 }
@@ -116,7 +142,19 @@ let asyncHolderFailed = ()=>({
 	timeout: 3000,
 })
 
+
+// Functional components
+// ------------------------------
+let functionalComponent = {
+	functional: true,
+	render: function( createElement, context ) {
+		return createElement( `simple-component-${context.props.number}` )
+	},
+}
+
+
 // Export current component
+// ------------------------------
 export default {
 	name: 'ComponentsDynamic',
 	data () {
@@ -131,6 +169,7 @@ export default {
 		asyncComponentFailed,
 		asyncHolder,
 		asyncHolderFailed,
+		functionalComponent,
 	},
 	methods: {
 		switchCurrentComponent() {
