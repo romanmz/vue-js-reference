@@ -42,6 +42,12 @@
 		<p><output>{{ 'Uppercase Filter' | uppercase }}</output> <output>{{ 'Repeat Filter ' | repeat(2) }}</output></p>
 		<p><output>{{ 'Chained Filters ' | uppercase | repeat(2) }}</output></p>
 		
+		<hr>
+		<h2>Plugins</h2>
+		<p>When you have a set of global settings you need to reuse on multiple Vue instances, it is better to encapsulate it in a plugin rather than manually modifying global settings. You can then load the plugin whenever necessary.</p>
+		<p>The plugin is a simple object with an <code>install</code> property, which takes a callback function that receives the global <code>Vue</code> object as the first argument. Inside the function you can safely modify any global settings you need.</p>
+		<p>To "install" the plugin simply call the <code>Vue.use()</code> method and pass the plugin object as an argument, e.g. <code>Vue.use( myPlugin )</code>. This needs to be done before the main Vue instance is initialized.</p>
+		
 	</div>
 </template>
 
@@ -107,6 +113,26 @@ let repeatFilter = (value, repeat) => {
 	}
 	return finalValue;
 }
+
+
+// Plugins
+// ------------------------------
+let myPlugin = {
+	install( Vue, options ) {
+		// Adding global static methods
+		Vue.globalMethod = ()=>{ console.log('static method!') };
+		// Adding global directives
+		Vue.directive( 'plugin-directive', {} );
+		// Adding global mixins
+		Vue.mixin({});
+		// Adding instance methods
+		Vue.prototype.$instanceMethod = ()=>{};
+		// etc…
+	}
+}
+import Vue from 'vue'
+Vue.use( myPlugin )
+Vue.globalMethod()
 
 
 // ------------------------------
