@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import VueInstance from '@/components/VueInstance'
 import DynamicText from '@/components/DynamicText'
 import AttributeDirectives from '@/components/AttributeDirectives'
 import ControlFlow from '@/components/ControlFlow'
@@ -24,6 +25,11 @@ export default new Router({
 	routes: [
 		{
 			path: '/',
+			name: 'Vue Instance',
+			component: VueInstance,
+		},
+		{
+			path: '/dynamic-text/',
 			name: 'Dynamic Text',
 			component: DynamicText,
 		},

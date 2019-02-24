@@ -2,7 +2,8 @@
 	<div id="app">
 		<header class="app-header">
 			<ol class="main-nav">
-				<li><router-link to="/">Dynamic Text</router-link></li>
+				<li><router-link to="/">Vue Instance</router-link></li>
+				<li><router-link to="/dynamic-text/">Dynamic Text</router-link></li>
 				<li><router-link to="/attributes/">Attribute Directives</router-link></li>
 				<li><router-link to="/control-flow/">Control Flow</router-link></li>
 				<li><router-link to="/events/">Events</router-link></li>
