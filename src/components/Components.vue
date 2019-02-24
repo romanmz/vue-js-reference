@@ -43,6 +43,23 @@
 		<hr>
 		<h2>Changing the root element of the component</h2>
 		<p>If for some reason having a custom component in your markup is causing issues (generally markup validation issues), you can add a standard HTML tag instead, and then have Vue convert it to the correct component by passing a <code>is</code> attribute with the name of the component, e.g: <code>&lt;section is="todo-item"&gt;</code>.</p>
+		
+		<hr>
+		<h2>Direct DOM manipulation</h2>
+		<p>In general you shouldn't be doing direct DOM manipulation, but in case you need to you'll need to wait for the next Vue's "tick" to make sure you're accessing the most up to date version of the DOM element.</p>
+		<p>For this you need to call the <code>Vue.nextTick()</code> static method, or the <code>this.$nextTick()</code> instance method, both take a callback function as an argument, which will be triggered once it's safe to perform DOM manipulations.</p>
+		
+		<h3>Making child elements available for scripting</h3>
+		<p>If you want certain elements within a component to be made easily available for scripting, add a <code>ref</code> attribute to them with a unique value. You can then access them from the component code by inspecting the <code>this.$refs</code> property.</p>
+		
+		<h3>Testing DOM elements selection and manipulation</h3>
+		<p ref="dom-element">This is a regular paragraph with a <code>ref</code> attribute.</p>
+		<local-component ref="component-element"></local-component>
+		<p>
+			<button class="button" @click="checkRefs">Check marked elements</button>
+			<button class="button" @click="updatedRefs">Update marked elements</button>
+		</p>
+		
 	</div>
 </template>
 
@@ -67,6 +84,17 @@ export default {
 	},
 	data () {
 		return {
+		}
+	},
+	methods: {
+		checkRefs() {
+			console.log( this.$refs );
+		},
+		updatedRefs() {
+			this.$nextTick(()=>{
+				this.$refs['dom-element'].innerHTML += ' UPDATED!'
+				this.$refs['component-element'].$el.innerHTML += ' UPDATED!'
+			})
 		}
 	},
 }
