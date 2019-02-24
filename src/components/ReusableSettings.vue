@@ -9,6 +9,30 @@
 		<p>This function was defined in a mixin, and then passed to the current component: <button class="button" @click="shuffleCard">Shuffle Card</button></p>
 		<p>You can also define global mixins with the <code>Vue.mixin()</code> method, which will make all Vue instances and components inherit the components of that mixin automatically, but this is not best practice.</p>
 		
+		<hr>
+		<h2>Custom directives</h2>
+		<p>You can create your own custom directives like <code>v-model</code>, <code>v-show</code>, etc…, to register global directives use the <code>Vue.directive()</code> method, to register them only for particular instances or components create a configuration object and pass it to their <code>directives</code> property.</p>
+		<p>Any new directives you create are always prefixed with <code>v-</code>.</p>
+		<p>The configuration object for a custom directive accepts the following callback functions:</p>
+		<ul>
+			<li><code>bind</code> is called when the directive is first bound to the element, runs only once</li>
+			<li><code>inserted</code> runs every time the element is inserted into its parent node</li>
+			<li><code>update</code> runs after the element has been updated, but not necessarily after the children have been updated as well</li>
+			<li><code>componentUpdated</code> runs after both the element and all its children have been updated</li>
+			<li><code>unbind</code> is called when the directive is unbound from the element, runs only once</li>
+		</ul>
+		<p>Another option is to pass a single callback function instead of an object, which will be bound automatically to the <code>bind</code> and <code>update</code> events.</p>
+		<p>All callbacks receive at least three arguments: the DOM element, a binding object, and a vnode</p>
+		<p>The <code>binding</code> object contains the following properties:</p>
+		<ul>
+			<li><code>name</code>: the name of the triggered directive (without the <code>v-</code> prefix)</li>
+			<li><code>value</code>: the value passed to the attribute (resolved expression)</li>
+			<li><code>expression</code>: the value passed to the attribute (unresolved expression)</li>
+			<li><code>arg</code>: the argument passed to the directive, if any (keywords added after the <code>:</code> character)</li>
+			<li><code>modifiers</code> the list of modifiers passed to the directive, if any (keywords added after the <code>.</code> character)</li>
+		</ul>
+		<p><output v-describe v-log:foo.bar="123">Testing callback functions on a custom directive</output></p>
+		
 	</div>
 </template>
 
@@ -48,11 +72,26 @@ let cardMixin = {
 	},
 };
 
+
+// Custom directives
 // ------------------------------
-// Export current component
+let describeMixin = {
+	bind( el, binding, vnode ) {},
+	inserted( el, binding, vnode ) {
+		console.log( `Tag name: ${el.tagName}. Number of children: ${vnode.children.length}` );
+	},
+	update( el, binding, vnode, oldVnode ) {},
+	componentUpdated( el, binding, vnode, oldVnode ) {},
+	unbind( el, binding, vnode ) {},
+}
+let logMixin = (el, binding, vnode) => { console.log( binding ) }
+
+
+// ------------------------------
 export default {
 	name: 'ReusableSettings',
 	mixins: [cardMixin],
+	directives: {describe: describeMixin, log: logMixin},
 }
 </script>
 
