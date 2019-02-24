@@ -57,7 +57,7 @@
 			<li><code>~!.click</code> == <code>click.once.capture</code></li>
 		</ul>
 		<h3>Accessing child elements from within <code>render</code></h3>
-		<p>If you need to access the tags contained within the element being rendered, use the <code>this.$slots</code> property.</p>
+		<p>If you need to access the tags contained within the element being rendered, use the <code>this.$slots</code> and <code>this.$scopedSlots</code> properties.</p>
 		<h3>Component test:</h3>
 		<repeat-content repeat="3">This is repeated content</repeat-content>
 		
