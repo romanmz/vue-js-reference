@@ -1,5 +1,5 @@
 <template>
-	<div class="section-routing">
+	<div class="section-state-management">
 		<h1>State Management</h1>
 		
 		<hr>
@@ -22,6 +22,8 @@
 					<li>You trigger actions with the <code>dispatch</code> method instead of <code>commit</code></li>
 				</ul>
 			</li>
+			<li><code>namespaced</code> used for modules (see section below)</li>
+			<li><code>modules</code> list of modules to load (see section below)</li>
 		</ul>
 		
 		<h3>Vuex store instance methods</h3>
@@ -70,6 +72,10 @@
 		</div>
 		<p>On the child component:</p>
 		<user-profile></user-profile>
+		
+		<hr>
+		<h2>Modules</h2>
+		<p>[pending]</p>
 		
 	</div>
 </template>
