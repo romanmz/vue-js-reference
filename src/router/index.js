@@ -11,6 +11,7 @@ import ComponentsModel from '@/components/ComponentsModel'
 import ComponentsContent from '@/components/ComponentsContent'
 import ComponentsDynamic from '@/components/ComponentsDynamic'
 import Animations from '@/components/Animations'
+import RenderFunction from '@/components/RenderFunction'
 import ReusableSettings from '@/components/ReusableSettings'
 
 Vue.use(Router)
@@ -71,6 +72,11 @@ export default new Router({
 			path: '/animations/',
 			name: 'Animations',
 			component: Animations,
+		},
+		{
+			path: '/render-function/',
+			name: 'Render Function',
+			component: RenderFunction,
 		},
 		{
 			path: '/reusable-settings/',
