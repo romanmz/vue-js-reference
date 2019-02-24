@@ -32,7 +32,7 @@
 			<li>It supports the use of scoped CSS</li>
 			<li>It allows you to precompile the CSS and Javascript of all components into single files</li>
 		</ul>
-		<p>Read the <a href="https://vuejs-templates.github.io/webpack/">Vue.js webpack documentation</a>.</p>
+		<p>Read the <a href="https://vue-loader.vuejs.org/en/">vue-loader</a> and <a href="https://vuejs-templates.github.io/webpack/">Vue.js webpack</a> documentation.</p>
 		<p>You may also need to install the scss loader, just run <code>$ npm i sass-loader node-sass --save-dev</code>.</p>
 		
 		<hr>

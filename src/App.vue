@@ -18,6 +18,7 @@
 				<li><router-link to="/animations/">Animations</router-link></li>
 				<li><router-link to="/render-function/">Render Function</router-link></li>
 				<li><router-link to="/reusable-settings/">Reusable Settings</router-link></li>
+				<li><router-link to="/server-side-rendering/">Server-side Rendering</router-link></li>
 			</ol>
 		</header>
 		<main class="app-main">
